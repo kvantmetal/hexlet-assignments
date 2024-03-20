@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.lang.reflect.Method;
+import java.util.Set;
 
 @SpringBootApplication
 public class Application {
@@ -14,7 +15,7 @@ public class Application {
         var address = new Address("London", 12345678);
 
         // BEGIN
-        SpringApplication.run(Application.class, args);
+//        SpringApplication.run(Application.class, args);
         for (Method method : Address.class.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Inspect.class)) {
                 try {
@@ -22,8 +23,8 @@ public class Application {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                System.out.println("Method name: " + method.getName());
-                System.out.println("Method return type: " + method.getReturnType());
+
+                System.out.println("Method " + method.getName() + " returns a value of type: " + method.getReturnType());
 
             }
         }
