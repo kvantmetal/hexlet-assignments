@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-@SpringBootTest
 class ApplicationTest {
 
 
