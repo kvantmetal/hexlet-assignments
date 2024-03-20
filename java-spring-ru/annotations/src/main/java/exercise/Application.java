@@ -2,7 +2,6 @@ package exercise;
 
 import exercise.annotation.Inspect;
 import exercise.model.Address;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.lang.reflect.Method;
 
