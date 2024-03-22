@@ -36,7 +36,7 @@ public class Application {
     }
 
     @PutMapping("/posts/{id}")
-    public Post update(@PathVariable String id, Post postData) {
+    public Post update(@PathVariable String id, @RequestBody Post postData) {
         var optionalPost = posts.stream().filter(p -> p.getId().equals(id)).findFirst();
 
         if (optionalPost.isPresent()) {
