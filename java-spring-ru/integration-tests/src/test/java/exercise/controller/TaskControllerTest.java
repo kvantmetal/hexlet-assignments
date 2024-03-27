@@ -113,7 +113,7 @@ class ApplicationTest {
 
         Task taskDb = taskRepository.findById(savedTask.getId()).get();
 
-        assertThat(taskDb).usingRecursiveComparison().ignoringFields("id").isEqualTo(task2);
+        assertThat(taskDb).usingRecursiveComparison().ignoringFields("id", "createdAt", "updatedAt").isEqualTo(task2);
 
     }
 
