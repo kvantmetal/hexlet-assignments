@@ -57,6 +57,16 @@ class ApplicationTest {
         assertThatJson(body).isArray();
     }
 
+
+    private Task generateTask() {
+        return Instancio.of(Task.class)
+            .ignore(Select.field(Task::getId))
+            .supply(Select.field(Task::getTitle), () -> faker.lorem().word())
+            .supply(Select.field(Task::getDescription), () -> faker.lorem().paragraph())
+            .create();
+    }
+
+    // BEGIN
     @Test
     public void testIndexById() throws Exception {
         Task task = Instancio.of(Task.class).create();
@@ -118,16 +128,5 @@ class ApplicationTest {
         assertThat(taskRepository.findById(savedTask.getId())).isEmpty();
 
     }
-
-    private Task generateTask() {
-        return Instancio.of(Task.class)
-            .ignore(Select.field(Task::getId))
-            .supply(Select.field(Task::getTitle), () -> faker.lorem().word())
-            .supply(Select.field(Task::getDescription), () -> faker.lorem().paragraph())
-            .create();
-    }
-
-    // BEGIN
-
     // END
 }
