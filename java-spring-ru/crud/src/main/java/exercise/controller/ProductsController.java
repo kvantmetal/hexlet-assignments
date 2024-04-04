@@ -4,11 +4,8 @@ import exercise.dto.ProductCreateDTO;
 import exercise.dto.ProductDTO;
 import exercise.dto.ProductUpdateDTO;
 import exercise.exception.ResourceNotFoundException;
-import exercise.mapper.CategoryMapper;
 import exercise.mapper.ProductMapper;
-import exercise.model.Category;
 import exercise.model.Product;
-import exercise.repository.CategoryRepository;
 import exercise.repository.ProductRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +24,6 @@ public class ProductsController {
 
     @Autowired
     private ProductMapper productMapper;
-
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     // BEGIN
     @GetMapping(path = "")
@@ -65,8 +59,7 @@ public class ProductsController {
         }
         Product product = productOptional.get();
         productMapper.update(productUpdateDTO, product);
-        Optional<Category> byId = categoryRepository.findById(productUpdateDTO.getCategoryId().get());
-        product.setCategory(byId.get());
+//
         productRepository.save(product);
         return ResponseEntity.ok(productMapper.map(product));
     }
