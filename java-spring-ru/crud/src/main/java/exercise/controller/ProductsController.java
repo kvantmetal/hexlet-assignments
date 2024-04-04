@@ -59,7 +59,7 @@ public class ProductsController {
         }
         Product product = productOptional.get();
         productMapper.update(productUpdateDTO, product);
-//
+
         productRepository.save(product);
         return ResponseEntity.ok(productMapper.map(product));
     }
